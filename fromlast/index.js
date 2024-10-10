@@ -11,6 +11,26 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
-function fromLast(list, n) {}
+const { LinkedList } = require("../circular/linkedlist");
 
+function fromLast(list, n) {
+    let ahead = list.head;
+    let past = list.head;
+    while (n > 0) {
+        ahead = ahead.next;
+        n--;
+    }
+    while (ahead.next) {
+        past = past.next
+        ahead = ahead.next;
+
+    }
+    return past;
+}
+const list = new LinkedList();
+list.insertLast('a');
+list.insertLast('b');
+list.insertLast('c');
+list.insertLast('d');
+console.log(fromLast(list, 2).data);
 module.exports = fromLast;
